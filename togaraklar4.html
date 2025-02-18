@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Grammar & Vocabulary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0a0a23;
+            color: #fff;
+            font-family: 'Press Start 2P', cursive;
+            text-align: center;
+        }
+        .container {
+            margin: 50px auto;
+            width: 80%;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 20px cyan;
+            position: relative;
+            overflow: hidden;
+        }
+        .bubble {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 255, 255, 0.5);
+            position: absolute;
+            bottom: -60px;
+            animation: float 5s linear infinite;
+            border-radius: 50%;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-600px); opacity: 0; }
+        }
+        .button {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 16px;
+            margin-top: 20px;
+            color: white;
+            background: cyan;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .button:hover {
+            background: #00ffcc;
+            box-shadow: 0 0 10px white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to English Grammar & Vocabulary</h1>
+        <p>Learn basic English grammar rules and important vocabulary words!</p>
+        <h2>Grammar Rules:</h2>
+        <ul>
+            <li>Use "a" before words that start with consonant sounds (e.g., a cat).</li>
+            <li>Use "an" before words that start with vowel sounds (e.g., an apple).</li>
+            <li>Always capitalize the first letter of a sentence.</li>
+            <li>Use "is" for singular and "are" for plural subjects.</li>
+        </ul>
+        <h2>Vocabulary:</h2>
+        <p>Apple - Olma</p>
+        <p>Car - Mashina</p>
+        <p>Book - Kitob</p>
+        <p>House - Uy</p>
+        <a href="audio_page.html" class="button">Next</a>
+    </div>
+    <script>
+        function createBubbles() {
+            for (let i = 0; i < 15; i++) {
+                let bubble = document.createElement('div');
+                bubble.classList.add('bubble');
+                document.body.appendChild(bubble);
+                bubble.style.left = Math.random() * 100 + "vw";
+                bubble.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                setTimeout(() => {
+                    bubble.remove();
+                }, 5000);
+            }
+        }
+        setInterval(createBubbles, 1000);
+    </script>
+</body>
+</html>

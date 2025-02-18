@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-Sinflar Uchun</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        body {
+            background-color: #0a0f24;
+            color: #00ffcc;
+            font-family: 'Press Start 2P', cursive;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .section {
+            width: 80%;
+            padding: 20px;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            border-radius: 10px;
+            box-shadow: 0 0 15px #00ffcc;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .section:hover {
+            transform: scale(1.1);
+        }
+        .bubbles {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #00ffcc;
+            border-radius: 50%;
+            animation: float 5s infinite linear;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #000;
+            color: #fff;
+            padding: 10px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>2-Sinflar Uchun</h1>
+    <div class="container">
+        <div class="section" onclick="window.location.href='darslar.html'">Maktab Darslari</div>
+        <div class="section" onclick="window.location.href='togarakar2.html'">To'garaklar</div>
+    </div>
+    <p>Bu yerda siz o'zingizga yoqqan mashg'ulotlar bilan shug'ullana olasiz!</p>
+    <footer>
+        &copy; 2025 Barcha huquqlar himoyalangan.
+    </footer>
+
+    <script>
+        function createBubbles() {
+            for (let i = 0; i < 20; i++) {
+                let bubble = document.createElement("div");
+                bubble.className = "bubbles";
+                bubble.style.left = Math.random() * 100 + "vw";
+                bubble.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                document.body.appendChild(bubble);
+                setTimeout(() => { bubble.remove(); }, 5000);
+            }
+        }
+        setInterval(createBubbles, 1000);
+    </script>
+</body>
+</html>

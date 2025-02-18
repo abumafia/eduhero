@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register & Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0a0a2a;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 0 10px cyan;
+        }
+        input, select, button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background: cyan;
+            cursor: pointer;
+        }
+        .bubbles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .bubble {
+            position: absolute;
+            background: cyan;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 5s infinite linear;
+        }
+        @keyframes float {
+            from { transform: translateY(100vh); }
+            to { transform: translateY(-10vh); }
+        }
+    </style>
+</head>
+<body>
+    <div class="bubbles"></div>
+    <div class="container" id="register">
+        <h2>Ro'yxatdan o'tish</h2>
+        <input type="text" id="username" placeholder="Ism kiriting">
+        <input type="password" id="password" placeholder="Parol kiriting">
+        <select id="classSelect">
+            <option value="1">1-sinf</option>
+            <option value="2">2-sinf</option>
+            <option value="3">3-sinf</option>
+            <option value="4">4-sinf</option>
+        </select>
+        <button onclick="register()">Ro'yxatdan o'tish</button>
+        <p><a href="#" onclick="showLogin()">Tizimga kirish</a></p>
+    </div>
+
+    <div class="container" id="login" style="display: none;">
+        <h2>Tizimga kirish</h2>
+        <input type="text" id="loginUsername" placeholder="Ism kiriting">
+        <input type="password" id="loginPassword" placeholder="Parol kiriting">
+        <button onclick="login()">Kirish</button>
+        <p><a href="#" onclick="showRegister()">Ro'yxatdan o'tish</a></p>
+    </div>
+
+    <script>
+        function register() {
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            let classSelect = document.getElementById("classSelect").value;
+            
+            if(username && password) {
+                localStorage.setItem("username", username);
+                localStorage.setItem("password", password);
+                localStorage.setItem("class", classSelect);
+                alert("Muvaffaqiyatli ro'yxatdan o'tdingiz! Tizimga kiring.");
+                showLogin();
+            } else {
+                alert("Barcha maydonlarni to'ldiring!");
+            }
+        }
+
+        function login() {
+            let loginUsername = document.getElementById("loginUsername").value;
+            let loginPassword = document.getElementById("loginPassword").value;
+            let savedUsername = localStorage.getItem("username");
+            let savedPassword = localStorage.getItem("password");
+            let savedClass = localStorage.getItem("class");
+            
+            if(loginUsername === savedUsername && loginPassword === savedPassword) {
+                alert("Muvaffaqiyatli tizimga kirdingiz!");
+                window.location.href = "class" + savedClass + ".html";
+            } else {
+                alert("Noto'g'ri ism yoki parol!");
+            }
+        }
+        
+        function showLogin() {
+            document.getElementById("register").style.display = "none";
+            document.getElementById("login").style.display = "block";
+        }
+
+        function showRegister() {
+            document.getElementById("login").style.display = "none";
+            document.getElementById("register").style.display = "block";
+        }
+
+        function createBubbles() {
+            let bubblesContainer = document.querySelector(".bubbles");
+            for (let i = 0; i < 30; i++) {
+                let bubble = document.createElement("div");
+                bubble.classList.add("bubble");
+                bubble.style.left = Math.random() * 100 + "vw";
+                bubble.style.animationDuration = Math.random() * 3 + 2 + "s";
+                bubblesContainer.appendChild(bubble);
+            }
+        }
+
+        createBubbles();
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4-sinflar sahifasi</title>
+    <style>
+        body {
+            background-color: #0a0f24;
+            color: white;
+            font-family: 'Press Start 2P', cursive;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .section {
+            background: linear-gradient(135deg, #1f3b8f, #33d9ff);
+            padding: 20px;
+            margin: 20px auto;
+            width: 50%;
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px #33d9ff;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+        .section:hover {
+            transform: scale(1.1);
+        }
+        footer {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            color: #33d9ff;
+        }
+        .bubble {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(51, 217, 255, 0.5);
+            border-radius: 50%;
+            animation: float 10s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>4-sinflar uchun platforma</h1>
+        <div class="section" onclick="location.href='maktab_darslari4.html'">Maktab darslari</div>
+        <div class="section" onclick="location.href='togaraklar4.html'">To‘garaklar</div>
+    </div>
+    <p>Bu sahifa 4-sinf o'quvchilari uchun mo'ljallangan bo'lib, 
+bilim darajasini qiziqarli yo'llar bilan oshirishga yordam beraoladi</p>
+    <footer>&copy; 2025 EduHero. HALLAYM LLC. Barcha huquqlar himoyalangan.</footer>
+    <script>
+        function createBubble() {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+            document.body.appendChild(bubble);
+            
+            bubble.style.left = Math.random() * 100 + 'vw';
+            bubble.style.width = bubble.style.height = Math.random() * 20 + 10 + 'px';
+            
+            setTimeout(() => { bubble.remove(); }, 10000);
+        }
+        setInterval(createBubble, 500);
+    </script>
+</body>
+</html>

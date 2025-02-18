@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-Sinflar Uchun</title>
+    <style>
+        body {
+            background-color: #0a0f24;
+            color: #fff;
+            font-family: 'Press Start 2P', cursive;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .section:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .bubbles {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .bubble {
+            position: absolute;
+            background: rgba(0, 162, 255, 0.5);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px) translateX(0px); }
+            50% { transform: translateY(-100px) translateX(20px); }
+            100% { transform: translateY(0px) translateX(0px); }
+        }
+        footer {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="bubbles"></div>
+    <div class="container">
+        <h1>1-Sinflar Uchun</h1>
+        <div class="section" onclick="location.href='maktab_darslari.html'">
+            <h2>Maktab Darslari</h2>
+            <p>Matematika, ona tili va boshqa asosiy fanlar bo'yicha materiallar.</p>
+        </div>
+        <div class="section" onclick="location.href='togaraklar.html'">
+            <h2>To‘garaklar</h2>
+            <p>Sport, musiqa, rasm chizish va boshqa qiziqarli to‘garaklar.</p>
+        </div>
+    </div>
+    <footer>
+        © 2025 1-Sinflar Uchun - Barcha huquqlar himoyalangan.
+    </footer>
+    <script>
+        function createBubbles() {
+            const bubblesContainer = document.querySelector('.bubbles');
+            for (let i = 0; i < 20; i++) {
+                let bubble = document.createElement('div');
+                let size = Math.random() * 50 + 20;
+                bubble.classList.add('bubble');
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.left = `${Math.random() * 100}%`;
+                bubble.style.bottom = `-${size}px`;
+                bubble.style.animationDuration = `${Math.random() * 5 + 3}s`;
+                bubble.style.animationDelay = `${Math.random() * 3}s`;
+                bubblesContainer.appendChild(bubble);
+            }
+        }
+        createBubbles();
+    </script>
+</body>
+</html>
